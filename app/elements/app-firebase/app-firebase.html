@@ -1,0 +1,80 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<!--
+@license
+Copyright (c) 2016 Hemant Jadon. All rights reserved.
+This code may only be used under the BSD style license found at https://github.com/hemantjadon/Attendence-Manager/blob/master/LICENSE.md.
+-->
+
+<!-- Polymer and PolymerElements -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/polymerfire.html">
+
+<!-- Custom Web Components -->
+
+<dom-module id="app-firebase">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <firebase-app
+        api-key="AIzaSyBHrpkkw-8ccjT3GXprgL0JwnNxXVQGM-Q"
+        auth-domain="leaf-attendance-manager.firebaseapp.com"
+        database-url="https://leaf-attendance-manager.firebaseio.com"
+        storage-bucket="leaf-attendance-manager.appspot.com"
+        app="{{firebaseApp}}">
+    </firebase-app>
+
+    <firebase-auth id="firebase_auth"
+        signed-in="{{firebaseAuthIsSignedIn}}"
+        user="{{firebaseAuthUser}}"
+        auth="{{firebaseAuthService}}"
+        app="{{firebaseApp}}">
+    </firebase-auth>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'app-firebase',
+
+      properties: {
+        firebaseApp : {
+          type : Object,
+          notify : true
+        },
+        firebaseAuthUser : {
+          type : Object,
+          notify : true
+        },
+        firebaseAuthService : {
+          type : Object,
+          notify : true
+        },
+        firebaseAuthIsSignedIn : {
+          type : Boolean,
+          notify : true,
+          value : false
+        }
+      },
+      ready: function() {
+        setTimeout(()=>{
+          this.firebaseAuthService = this.$.firebase_auth.auth;
+        },0);
+      },
+    });
+  })();
+  </script>
+</dom-module>
