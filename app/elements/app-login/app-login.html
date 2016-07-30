@@ -15,13 +15,11 @@ This code may only be used under the BSD style license found at https://github.c
 
 <!-- Polymer and PolymerElements -->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/polymerfire.html">
 
 <!-- Custom Web Components -->
-<link rel="import" href="../app-firebase/app-firebase.html">
-<link rel="import" href="../app-layout/app-layout.html">
-<link rel="import" href="../app-login/app-login.html">
 
-<dom-module id="app-root">
+<dom-module id="app-login">
   <template>
     <style>
       :host {
@@ -29,47 +27,40 @@ This code may only be used under the BSD style license found at https://github.c
       }
     </style>
 
-    <app-firebase
-      firebase-app="{{firebaseApp}}">
-    </app-firebase>
+    <firebase-auth id="firebase_auth"
+      signed-in="{{firebaseAuthIsSignedIn}}"
+      user="{{firebaseAuthUser}}"
+      auth="{{firebaseAuthService}}">
+    </firebase-auth>
 
-    <app-login
-      firebase-auth-user="{{user}}"
-      firebase-auth-is-signed-in="{{signedIn}}"
-      firebase-auth-service="{{firebaseAuthService}}">
-    </app-login>
+    <button type="button" name="button" on-tap="_loginHandler">Google</button>
 
-    {{signedIn}}
-    {{user.displayName}}
   </template>
   <script>
   (function() {
     'use strict';
 
     Polymer({
-      is: 'app-root',
+      is: 'app-login',
 
       properties: {
-        signedIn : {
-          type : Boolean,
-          notify : true
-        },
-        user : {
-          type : Object,
-          notify : true
-        },
-        firebaseApp : {
+        firebaseAuthUser : {
           type : Object,
           notify : true
         },
         firebaseAuthService : {
           type : Object,
           notify : true
+        },
+        firebaseAuthIsSignedIn : {
+          type : Boolean,
+          notify : true,
+          value : false
         }
       },
-      _loginGoogle(evt){
-        console.log(this.firebaseApp);
-        console.log(this.firebaseAuthService);
+
+      _loginHandler(evt){
+        this.$.firebase_auth.signInWithPopup('google');
       }
     });
   })();

@@ -28,19 +28,12 @@ This code may only be used under the BSD style license found at https://github.c
     </style>
 
     <firebase-app
-        api-key="AIzaSyBHrpkkw-8ccjT3GXprgL0JwnNxXVQGM-Q"
-        auth-domain="leaf-attendance-manager.firebaseapp.com"
-        database-url="https://leaf-attendance-manager.firebaseio.com"
-        storage-bucket="leaf-attendance-manager.appspot.com"
-        app="{{firebaseApp}}">
+      api-key="AIzaSyBHrpkkw-8ccjT3GXprgL0JwnNxXVQGM-Q"
+      auth-domain="leaf-attendance-manager.firebaseapp.com"
+      database-url="https://leaf-attendance-manager.firebaseio.com"
+      storage-bucket="leaf-attendance-manager.appspot.com"
+      app="{{firebaseApp}}">
     </firebase-app>
-
-    <firebase-auth id="firebase_auth"
-        signed-in="{{firebaseAuthIsSignedIn}}"
-        user="{{firebaseAuthUser}}"
-        auth="{{firebaseAuthService}}"
-        app="{{firebaseApp}}">
-    </firebase-auth>
 
   </template>
   <script>
@@ -55,25 +48,7 @@ This code may only be used under the BSD style license found at https://github.c
           type : Object,
           notify : true
         },
-        firebaseAuthUser : {
-          type : Object,
-          notify : true
-        },
-        firebaseAuthService : {
-          type : Object,
-          notify : true
-        },
-        firebaseAuthIsSignedIn : {
-          type : Boolean,
-          notify : true,
-          value : false
-        }
-      },
-      ready: function() {
-        setTimeout(()=>{
-          this.firebaseAuthService = this.$.firebase_auth.auth;
-        },0);
-      },
+      }
     });
   })();
   </script>
