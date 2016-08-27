@@ -10,6 +10,7 @@
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
+    "gulp": "gulp",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
@@ -34,9 +35,15 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-copy": "0.0.2",
+    "gulp-less": "^3.1.0",
+    "gulp-watch": "^4.3.9",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1",
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
-    "typings":"^1.0.4"
+    "typings": "^1.0.4"
   },
   "author": "Hemant Jadon",
   "license": "ISC",
