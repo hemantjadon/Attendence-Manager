@@ -1,0 +1,23 @@
+{
+  "name": "attendance-manager",
+  "description": "Attendance manager application.",
+  "main": "index.js",
+  "authors": [
+    "Hemant Jadon"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hemantjadon/Attendence-Manager",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.6.1",
+    "webcomponentsjs": "^0.7.22",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}
