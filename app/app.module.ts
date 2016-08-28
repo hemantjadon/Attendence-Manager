@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { TitleService } from './common/services/title.service';
+
 import { AppComponent } from './app.component';
 import { routing,appRoutingProviders } from './app.routing';
 
@@ -14,8 +16,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 				routing,
 				HomeModule,
 				DashboardModule ],
-	declarations : [ AppComponent, ],
-	providers : [ appRoutingProviders ],
+	declarations : [ AppComponent ],
+	providers  :  [ appRoutingProviders,
+					TitleService ],
 	bootstrap : [ AppComponent ]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Component,OnInit,OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { TitleService } from '../services/title.service';
 
 @Component({
 	moduleId : module.id,
@@ -7,20 +9,21 @@ import { ActivatedRoute,Router } from '@angular/router';
 	templateUrl : './templates/navbar.component.html',
 	styleUrls : ['./styles/navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
-	pageTitle : string = "";
-
-	constructor (
-		private activatedRoute : ActivatedRoute,
-		private router : Router
+export class NavbarComponent implements OnInit,OnDestroy {
+	constructor(
+		private titleService : TitleService
 	) {}
 
-	ngOnInit(){
-		this.setPageTitle();
+	private pageTitle_subscription : Subscription;
+	private pageTitle : string;
+
+	ngOnInit () {
+		this.pageTitle_subscription = this.titleService.title.subscribe(title => {
+			this.pageTitle = title;
+		});
 	}
 
-	private setPageTitle() : void {
-		console.log(this.activatedRoute);
-		this.pageTitle = "Dash";
+	ngOnDestroy(){
+		this.pageTitle_subscription.unsubscribe();
 	}
-}
+ }
