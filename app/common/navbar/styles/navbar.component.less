@@ -1,5 +1,8 @@
 paper-toolbar{
 	background: #d81b60;
+	paper-icon-button {
+		display: none;
+	}
 }
 
 div.horizontal-nav paper-tabs paper-tab a {
@@ -14,5 +17,23 @@ div.horizontal-nav paper-tabs paper-tab a {
 }
 
 div.horizontal-nav paper-tabs paper-tab {
-	color: white;
+	color: #fff;
+	
+}
+
+div.horizontal-nav paper-tabs paper-tab::shadow paper-ripple {
+	color: #fff;
+}
+
+div.horizontal-nav paper-tabs::shadow div#selectionBar{
+	background-color: #dedede;
+}
+
+@media(max-width : 900px){
+	div.horizontal-nav{
+		display: none;
+	}
+	paper-toolbar paper-icon-button{
+		display: block;
+	}
 }

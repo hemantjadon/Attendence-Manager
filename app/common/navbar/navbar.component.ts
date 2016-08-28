@@ -1,4 +1,5 @@
-import { Component,OnInit,OnDestroy } from '@angular/core';
+import { Component,OnInit,OnDestroy,Output,EventEmitter } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { TitleService } from '../services/title.service';
@@ -7,7 +8,8 @@ import { TitleService } from '../services/title.service';
 	moduleId : module.id,
 	selector : 'nav-bar',
 	templateUrl : './templates/navbar.component.html',
-	styleUrls : ['./styles/navbar.component.css']
+	styleUrls : ['./styles/navbar.component.css'],
+	encapsulation : ViewEncapsulation.Native
 })
 export class NavbarComponent implements OnInit,OnDestroy {
 	constructor(

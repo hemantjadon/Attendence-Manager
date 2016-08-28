@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	moduleId : module.id,
 	selector : 'ng-app',
 	template : `
-			<paper-drawer-panel force-narrow>
+			<paper-drawer-panel force-narrow id="panel">
 				<div drawer> Drawer panel... </div>
 				<div main> 			
 					<paper-header-panel>
