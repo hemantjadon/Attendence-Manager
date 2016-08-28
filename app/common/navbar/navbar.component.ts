@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
 	moduleId : module.id,
@@ -6,4 +7,20 @@ import { Component } from '@angular/core';
 	templateUrl : './templates/navbar.component.html',
 	styleUrls : ['./styles/navbar.component.css']
 })
-export class NavbarComponent{ }
+export class NavbarComponent implements OnInit{
+	pageTitle : string = "";
+
+	constructor (
+		private activatedRoute : ActivatedRoute,
+		private router : Router
+	) {}
+
+	ngOnInit(){
+		this.setPageTitle();
+	}
+
+	private setPageTitle() : void {
+		console.log(this.activatedRoute);
+		this.pageTitle = "Dash";
+	}
+}
