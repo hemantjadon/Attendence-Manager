@@ -4,9 +4,19 @@ import { Component } from '@angular/core';
 	moduleId : module.id,
 	selector : 'ng-app',
 	template : `
-			<a routerLink="/home">Home</a>
-			<a routerLink="/dashboard">Dashboard</a>
-			<router-outlet></router-outlet>
+			<paper-drawer-panel force-narrow>
+				<div drawer> Drawer panel... </div>
+				<div main> 			
+					<paper-header-panel>
+						<div class="paper-header">
+							<nav-bar></nav-bar>
+						</div>
+						<div>
+							<router-outlet></router-outlet>
+						</div>
+					</paper-header-panel> 
+				</div>
+			</paper-drawer-panel>
 		`
 })
 export class AppComponent { }
